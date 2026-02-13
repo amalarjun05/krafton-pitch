@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronRight, ChevronLeft, MapPin, Calendar, Trophy, Users, Target, Zap, Layout, ShieldCheck, Gamepad2, BarChart3, Megaphone, Globe, CheckCircle, Printer, X } from 'lucide-react';
+import { ChevronRight, ChevronLeft, MapPin, Calendar, Trophy, Users, Target, Zap, Layout, ShieldCheck, Gamepad2, BarChart3, Megaphone, Globe, CheckCircle, Printer, X, ExternalLink } from 'lucide-react';
 
 // --- Assets & Styles ---
 // Using Tailwind CSS for styling (assumed available in environment)
@@ -35,10 +35,10 @@ const GlitchText = ({ text, size = "text-4xl md:text-6xl", color = "text-white" 
     <h1 className={`${size} font-black uppercase tracking-tighter ${color} relative z-10`}>
       {text}
     </h1>
-    <h1 className={`${size} font-black uppercase tracking-tighter text-red-500 absolute top-0 left-0 -ml-[2px] opacity-0 group-hover:opacity-50 transition-opacity duration-100 select-none z-0`}>
+    <h1 className={`${size} font-black uppercase tracking-tighter text-red-500 absolute top-0 left-0 -ml-[2px] opacity-0 group-hover:opacity-50 transition-opacity duration-100 select-none z-0 pointer-events-none`}>
       {text}
     </h1>
-    <h1 className={`${size} font-black uppercase tracking-tighter text-blue-500 absolute top-0 left-0 ml-[2px] opacity-0 group-hover:opacity-50 transition-opacity duration-100 select-none z-0`}>
+    <h1 className={`${size} font-black uppercase tracking-tighter text-blue-500 absolute top-0 left-0 ml-[2px] opacity-0 group-hover:opacity-50 transition-opacity duration-100 select-none z-0 pointer-events-none`}>
       {text}
     </h1>
   </div>
@@ -136,12 +136,21 @@ const WhyKeralaSlide = () => (
 const SocialProofSlide = () => (
     <div className="w-full max-w-6xl text-center">
         <h2 className="text-[#F2A900] text-lg font-bold tracking-widest uppercase mb-4">Our Track Record</h2>
-        <h1 className="text-4xl md:text-6xl font-black text-white mb-12">TRUSTED NETWORK</h1>
+        <h1 className="text-4xl md:text-6xl font-black text-white mb-12">TRUSTED BY BRANDS</h1>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 opacity-80">
-            {['NIT CALICUT', 'CUSAT', 'CET TRIVANDRUM', 'TKM KOLLAM', 'RSET KOCHI', 'GEC THRISSUR', 'FISAT', 'MACE'].map((college, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 py-6 px-4 rounded flex items-center justify-center">
-                    <span className="font-bold text-gray-400 tracking-wider">{college}</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            {[
+                { name: 'AMD', color: 'hover:border-red-500' },
+                { name: 'ACER', color: 'hover:border-green-500' },
+                { name: 'LOGITECH', color: 'hover:border-blue-400' },
+                { name: 'BENQ', color: 'hover:border-purple-500' },
+                { name: 'WINDOWS 11', color: 'hover:border-blue-600' },
+                { name: 'RED BULL', color: 'hover:border-yellow-500' },
+                { name: 'EA SPORTS', color: 'hover:border-red-600' },
+                { name: 'SUPERCELL', color: 'hover:border-orange-500' }
+            ].map((brand, i) => (
+                <div key={i} className={`bg-white/5 border border-white/10 py-8 px-4 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:scale-105 ${brand.color} group`}>
+                    <span className="font-black text-2xl md:text-3xl text-gray-500 group-hover:text-white transition-colors tracking-tighter">{brand.name}</span>
                 </div>
             ))}
         </div>
@@ -208,7 +217,8 @@ const VenuesSlide = () => (
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10">
+      {/* NIT Calicut */}
+      <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10 group hover:border-[#F2A900] transition-colors">
         <div className="h-2 bg-[#F2A900]"></div>
         <div className="p-8">
             <div className="flex justify-between items-start mb-4">
@@ -216,7 +226,15 @@ const VenuesSlide = () => (
                     <span className="bg-[#F2A900] text-black text-xs font-bold px-2 py-1 rounded uppercase">Tier 1 Event</span>
                     <h3 className="text-3xl font-black text-white mt-2">NIT CALICUT</h3>
                 </div>
-                <MapPin className="text-gray-500" />
+                <a 
+                  href="https://maps.app.goo.gl/LxE1pQGDncBafwVr8" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-2 bg-white/5 rounded-full hover:bg-[#F2A900] hover:text-black transition-all group-hover:bg-[#F2A900] group-hover:text-black text-gray-400"
+                  title="View on Google Maps"
+                >
+                    <MapPin size={24} />
+                </a>
             </div>
             <p className="text-gray-400 mb-6 text-sm">One of South India's premier engineering institutes. Known for 'Ragam' and a massive, tech-savvy student population.</p>
             <div className="space-y-3">
@@ -233,10 +251,19 @@ const VenuesSlide = () => (
                     <span className="text-gray-200 text-sm">Access to North Kerala Gaming Hubs</span>
                 </div>
             </div>
+            <a 
+              href="https://maps.app.goo.gl/LxE1pQGDncBafwVr8" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-[#F2A900] hover:underline"
+            >
+              VIEW LOCATION <ExternalLink size={12} />
+            </a>
         </div>
       </div>
 
-       <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10">
+       {/* Jain University */}
+       <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10 group hover:border-blue-500 transition-colors">
         <div className="h-2 bg-blue-500"></div>
         <div className="p-8">
             <div className="flex justify-between items-start mb-4">
@@ -244,7 +271,15 @@ const VenuesSlide = () => (
                     <span className="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded uppercase">Tier 2 Event</span>
                     <h3 className="text-3xl font-black text-white mt-2">JAIN UNIV KOCHI</h3>
                 </div>
-                <MapPin className="text-gray-500" />
+                <a 
+                  href="https://maps.app.goo.gl/mGBGPMGj9jpmYP8k9" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-2 bg-white/5 rounded-full hover:bg-blue-500 hover:text-white transition-all group-hover:bg-blue-500 group-hover:text-white text-gray-400"
+                   title="View on Google Maps"
+                >
+                    <MapPin size={24} />
+                </a>
             </div>
             <p className="text-gray-400 mb-6 text-sm">A modern campus in the heart of Kerala's commercial capital. Targeted, urban, and high-energy.</p>
             <div className="space-y-3">
@@ -261,6 +296,14 @@ const VenuesSlide = () => (
                     <span className="text-gray-200 text-sm">Strategic Kochi Metro Coverage</span>
                 </div>
             </div>
+            <a 
+              href="https://maps.app.goo.gl/mGBGPMGj9jpmYP8k9" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-blue-500 hover:underline"
+            >
+              VIEW LOCATION <ExternalLink size={12} />
+            </a>
         </div>
       </div>
     </div>
