@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronRight, ChevronLeft, MapPin, Calendar, Trophy, Users, Target, Zap, Layout, ShieldCheck, Gamepad2, BarChart3, Megaphone, Globe, CheckCircle, Printer, X, ExternalLink } from 'lucide-react';
+import { ChevronRight, ChevronLeft, MapPin, Calendar, Trophy, Users, Target, Zap, Layout, ShieldCheck, Gamepad2, BarChart3, Megaphone, Globe, CheckCircle, Printer, X, ExternalLink, Play } from 'lucide-react';
 
 // --- Assets & Styles ---
 // Using Tailwind CSS for styling (assumed available in environment)
@@ -136,7 +136,7 @@ const WhyKeralaSlide = () => (
 const SocialProofSlide = () => (
     <div className="w-full max-w-6xl text-center">
         <h2 className="text-[#F2A900] text-lg font-bold tracking-widest uppercase mb-4">Our Track Record</h2>
-        <h1 className="text-4xl md:text-6xl font-black text-white mb-12">TRUSTED BY BRANDS</h1>
+        <h1 className="text-4xl md:text-6xl font-black text-white mb-8">TRUSTED BY BRANDS</h1>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {[
@@ -149,29 +149,29 @@ const SocialProofSlide = () => (
                 { name: 'EA SPORTS', color: 'hover:border-red-600' },
                 { name: 'SUPERCELL', color: 'hover:border-orange-500' }
             ].map((brand, i) => (
-                <div key={i} className={`bg-white/5 border border-white/10 py-8 px-4 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:scale-105 ${brand.color} group`}>
-                    <span className="font-black text-2xl md:text-3xl text-gray-500 group-hover:text-white transition-colors tracking-tighter">{brand.name}</span>
+                <div key={i} className={`bg-white/5 border border-white/10 py-6 px-4 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:scale-105 ${brand.color} group`}>
+                    <span className="font-black text-xl md:text-2xl text-gray-500 group-hover:text-white transition-colors tracking-tighter">{brand.name}</span>
                 </div>
             ))}
         </div>
         
-        <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 p-8 rounded-2xl border border-white/10">
-            <div className="flex flex-col md:flex-row justify-around items-center gap-8">
-                <div className="text-center">
-                    <h3 className="text-4xl font-black text-white">50+</h3>
-                    <p className="text-[#F2A900] uppercase text-sm font-bold mt-1">College Clubs</p>
-                </div>
-                <div className="w-px h-12 bg-white/20 hidden md:block"></div>
-                <div className="text-center">
-                    <h3 className="text-4xl font-black text-white">200+</h3>
-                    <p className="text-[#F2A900] uppercase text-sm font-bold mt-1">Tournaments Executed</p>
-                </div>
-                <div className="w-px h-12 bg-white/20 hidden md:block"></div>
-                 <div className="text-center">
-                    <h3 className="text-4xl font-black text-white">100%</h3>
-                    <p className="text-[#F2A900] uppercase text-sm font-bold mt-1">Success Rate</p>
-                </div>
-            </div>
+        <h2 className="text-[#F2A900] text-sm font-bold tracking-widest uppercase mb-6">Previous Event Highlights</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+                { title: "Kerala Esports Series", url: "https://youtu.be/2p71cMI49wI?si=-hGXVHpngDCp4UhC", img: "https://img.youtube.com/vi/2p71cMI49wI/mqdefault.jpg" },
+                { title: "Gaming Utsav 2022", url: "https://youtu.be/OJBH7KlwdV8?si=1Ab7OTNWn1Be95_7", img: "https://img.youtube.com/vi/OJBH7KlwdV8/mqdefault.jpg" },
+                { title: "Rajagiri Esports 2023", url: "https://youtu.be/ROEoR53M4Nw?si=G5MbnXZYBqZmT3wQ", img: "https://img.youtube.com/vi/ROEoR53M4Nw/mqdefault.jpg" }
+            ].map((video, i) => (
+                <a key={i} href={video.url} target="_blank" rel="noopener noreferrer" className="group relative block rounded-xl overflow-hidden border border-white/10 hover:border-[#F2A900] transition-all h-48">
+                     <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style={{ backgroundImage: `url('${video.img}')` }}></div>
+                     <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex flex-col items-center justify-center">
+                        <div className="w-12 h-12 bg-[#F2A900] rounded-full flex items-center justify-center text-black mb-3 group-hover:scale-110 transition-transform">
+                            <Play fill="black" size={20} className="ml-1" />
+                        </div>
+                        <span className="font-bold text-white text-sm uppercase tracking-wider">{video.title}</span>
+                     </div>
+                </a>
+            ))}
         </div>
     </div>
 );
@@ -240,7 +240,7 @@ const VenuesSlide = () => (
             <div className="space-y-3">
                 <div className="flex items-center gap-3">
                     <Users size={18} className="text-[#F2A900]" />
-                    <span className="text-gray-200 text-sm">High Footfall Campus</span>
+                    <span className="text-gray-200 text-sm">1 Lakh + Footfall</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <Zap size={18} className="text-[#F2A900]" />
@@ -285,7 +285,7 @@ const VenuesSlide = () => (
             <div className="space-y-3">
                 <div className="flex items-center gap-3">
                     <Users size={18} className="text-blue-500" />
-                    <span className="text-gray-200 text-sm">Urban Gamer Demographic</span>
+                    <span className="text-gray-200 text-sm">50K + Footfall</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <Zap size={18} className="text-blue-500" />
@@ -495,18 +495,10 @@ const App = () => {
       
       {/* Header / Logo Area */}
       <div className="fixed top-0 left-0 w-full p-6 z-50 flex justify-between items-center pointer-events-none print:hidden">
-        <div className="text-2xl font-black tracking-tighter italic pointer-events-auto">
-            AKEF <span className="text-[#F2A900]">x</span> KRAFTON
+        <div className="pointer-events-auto">
+            <img src="https://www.akef.in/img/AKEF-LOGO-RED.png" alt="AKEF Logo" className="h-12 md:h-16 object-contain" />
         </div>
         <div className="flex items-center gap-4">
-            <button 
-                onClick={() => setViewMode(prev => prev === 'presentation' ? 'list' : 'presentation')}
-                className="pointer-events-auto bg-white/10 hover:bg-white/20 p-2 rounded text-sm flex items-center gap-2 backdrop-blur-sm transition-colors border border-white/10 text-white"
-                title={viewMode === 'presentation' ? "Prep for PDF / Print" : "Close Print View"}
-            >
-                {viewMode === 'presentation' ? <Printer size={16} /> : <X size={16} />}
-                <span className="hidden md:inline">{viewMode === 'presentation' ? 'Prep for PDF' : 'Close PDF View'}</span>
-            </button>
             <div className="text-xs font-mono text-gray-500 uppercase">
                 Confidential // Q2 2026 Proposal
             </div>
